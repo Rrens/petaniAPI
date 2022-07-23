@@ -136,6 +136,24 @@ class PetaniController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $petani = Petani::find($id);
+        // $petani->delete();
+        // return response()->json([
+        //     'success' => true,
+        //     'message' => 'Data berhasil dihapus'
+        // ]);
+        try {
+            petanis::find($id)->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'Data berhasil dihapus'
+            ]);
+        } catch (\Exception $e) {
+            // return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage()
+            ]);
+        }
     }
 }
