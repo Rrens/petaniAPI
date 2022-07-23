@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('petani', PetaniController::class);
+Route::post('/petani/{id}', [PetaniController::class, 'update']);
