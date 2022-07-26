@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\kelompok_jenis;
 use App\Models\petanis;
 use Illuminate\Http\Request;
 
@@ -75,7 +76,8 @@ class PetaniController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = petanis::find($id);
+        return response()->json($data, 200);
     }
 
     /**
@@ -86,7 +88,16 @@ class PetaniController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = petanis::find($id);
+        return response()->json($data, 200);
+    }
+
+    function kelompokTani()
+    {
+        // $data = petanis::getKelompokTani()->get();
+        // return response()->json($data, 200);
+        $data = kelompok_jenis::all();
+        return response()->json($data, 200);
     }
 
     /**

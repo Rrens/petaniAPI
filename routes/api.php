@@ -19,5 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('petani', PetaniController::class);
-Route::post('/petani/{id}', [PetaniController::class, 'update']);
+Route::post('/login', [PetaniController::class, 'login']);
+Route::post('/register', [PetaniController::class, 'register']);
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::resource('petani', PetaniController::class);
+    Route::post('/petani/{id}', [PetaniController::class, 'update']);
+    Route::get('kelompoktani', [PetaniController::class, 'kelompoktani']);
+});
